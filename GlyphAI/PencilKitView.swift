@@ -27,6 +27,8 @@ struct PencilKitView: View {
     
     var body: some View {
         VStack {
+            Text("Mengo")
+                .font(Font.custom("PixeloidSansBold", size: 18))
             DrawingView(canvasView: $canvasView)
                 .frame(width: 320, height: 320)
                 .border(Color.black, width: 2) // Adiciona uma borda preta de 2 pontos
