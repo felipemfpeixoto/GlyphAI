@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F4684AF2C249E9100406B9A /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684AE2C249E9100406B9A /* DrawingView.swift */; };
+		0F4684B12C25C37300406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684B02C25C37300406B9A /* MeuModeloFoda.mlpackage */; };
 		0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */; };
 		0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD332B2C21F2B4000502B0 /* ContentView.swift */; };
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F4684AE2C249E9100406B9A /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		0F4684B02C25C37300406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
 		0FBD33262C21F2B4000502B0 /* GlyphAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphAIApp.swift; sourceTree = "<group>"; };
 		0FBD332B2C21F2B4000502B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,11 +57,13 @@
 		0FBD33282C21F2B4000502B0 /* GlyphAI */ = {
 			isa = PBXGroup;
 			children = (
+				0F4684B02C25C37300406B9A /* MeuModeloFoda.mlpackage */,
 				0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */,
 				0FBD332B2C21F2B4000502B0 /* ContentView.swift */,
 				0FBD332D2C21F2B6000502B0 /* Assets.xcassets */,
 				0FBD332F2C21F2B6000502B0 /* Preview Content */,
 				0FBD33372C220E14000502B0 /* PencilKitView.swift */,
+				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
 			);
 			path = GlyphAI;
 			sourceTree = "<group>";
@@ -141,8 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
+				0F4684B12C25C37300406B9A /* MeuModeloFoda.mlpackage in Sources */,
 				0FBD33382C220E14000502B0 /* PencilKitView.swift in Sources */,
 				0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */,
+				0F4684AF2C249E9100406B9A /* DrawingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
