@@ -6,7 +6,7 @@ struct YourTypographies: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack (spacing: 0) {
                 ZStack {
                     Rectangle()
                         .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
@@ -30,27 +30,32 @@ struct YourTypographies: View {
                     }
                 }
                 
-                VStack(alignment: .leading) {
+                
+                ZStack {
                     HStack {
                         Button(action: {
                             // mostrar o sheet para criar nova tipografia
                             isSHowingCreate.toggle()
                         }, label: {
+                            
                             Image("plus")
                         })
-                        
-                        if dao.fonts.count == 0 {
-                            Text("No added fontes yet")
-                                .font(Font.custom("PixeloidSans-Bold", size: 34).weight(.bold))
-                                .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
-                        } else {
-                            ForEach(dao.fonts, id: \.self.name) { fonte in
-                                FontCardView(fonte: fonte)
-                            }
+                        .padding(.leading, 100)
+                        Spacer()
+                    
+                    }
+                    if dao.fonts.count == 0 {
+                        Text("No added fonts yet")
+                            .font(Font.custom("PixeloidSans-Bold", size: 34).weight(.bold))
+                            .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
+                        Spacer()
+                    } else {
+                        ForEach(dao.fonts, id: \.self.name) { fonte in
+                            FontCardView(fonte: fonte)
                         }
                     }
-                    Spacer()
                 }
+                .frame(maxHeight: .infinity)
             }
             
             if isSHowingCreate {
@@ -60,6 +65,7 @@ struct YourTypographies: View {
                 }
             }
         }
+        .ignoresSafeArea()
         
     }
 }
