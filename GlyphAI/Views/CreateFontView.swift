@@ -5,6 +5,8 @@ import SwiftUI
 struct CreateFontView: View {
     @State private var typographyName = ""
     
+    @Binding var isSHowing: Bool
+    
     var body: some View {
         ZStack {
             Image("dottedbackground")
@@ -87,9 +89,18 @@ struct CreateFontView: View {
                                     .stroke(Color.black, lineWidth: 5) // Traçado preto
                             )
                         
-                        Text("Create")
-                            .font(Font.custom("PixeloidSans-Bold", size: 22).weight(.bold))
-                            .foregroundColor(.black) // Cor do texto
+                        Button {
+                            if typographyName != "" { // Gambiarra, fazer direito depois
+                                dao.createNewFont(name: typographyName)
+                            }
+                            isSHowing.toggle()
+                        } label: {
+                            Text("Create")
+                                .font(Font.custom("PixeloidSans-Bold", size: 22).weight(.bold))
+                                .foregroundColor(.black) // Cor do texto
+                        }
+
+                        
                     }
                     .frame(width: 173, height: 50)
                     .padding(.horizontal, 10)
@@ -102,5 +113,5 @@ struct CreateFontView: View {
 
 
 #Preview {
-    CreateFontView()
+    CreateFontView(isSHowing: .constant(true))
 }

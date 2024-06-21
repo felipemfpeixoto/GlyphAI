@@ -7,13 +7,35 @@
 
 import SwiftUI
 
+let dao: DAO = DAO.instance
+
 @main
 struct GlyphAIApp: App {
+    
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some Scene {
         WindowGroup {
-          
-       ContentView()
-//            PencilKitView()
+            ZStack {
+//                ContentView()
+                YourTypographies()
+            }
+            .onChange(of: scenePhase) {
+                switch scenePhase {
+                case .background:
+                    do {
+                        try DAO.instance.save()
+                    } catch {
+                        print("Se ferrou")
+                    }
+                case .inactive:
+                    break
+                case .active:
+                    break
+                @unknown default:
+                    break
+                }
+            }
         }
     }
 }
