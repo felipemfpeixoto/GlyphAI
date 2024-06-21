@@ -36,6 +36,7 @@ struct FontCardView: View {
                             }
                             .padding([.top, .trailing], 10)
                         }
+<<<<<<< HEAD:GlyphAI/Views/FontCardView.swift
                         Spacer()
                     }
                 )
@@ -51,6 +52,23 @@ struct FontCardView: View {
                         .stroke(Color.black, lineWidth: 2.5)
                 )
                 .padding(.bottom, 3)
+=======
+                    )
+                
+                Text("Fonte nova lala muito legal as fontes")
+                    .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
+                    .padding(.horizontal, 10)
+                    .frame(width: 250) // Garante que
+                    .padding(.vertical, 10)
+                    .background(Color.mediumGray)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 0)
+                            .stroke(Color.black, lineWidth: 2.5)
+                    )
+                    .padding(.bottom, 3)
+            }
+            .frame(width: 260, height: 260) // Garante que o ZStack tenha o mesmo tamanho que o retângulo
+>>>>>>> main:GlyphAI/FontCardView.swift
         }
         .frame(width: 260, height: 260) // Garante que o ZStack tenha o mesmo tamanho que o retângulo
     }

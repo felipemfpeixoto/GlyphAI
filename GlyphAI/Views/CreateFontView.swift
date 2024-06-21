@@ -12,23 +12,23 @@ struct CreateFontView: View {
             Image("dottedbackground")
                 .padding(.top, 35)
                 .padding(.leading, 35)
-                
+            
             
             Rectangle()
-            .foregroundColor(.clear)
-            .frame(width: 577, height: 335)
-            .background(.white)
+                .foregroundColor(.clear)
+                .frame(width: 577, height: 335)
+                .background(.white)
             
-
-            .overlay(
-            Rectangle()
-            .inset(by: 2.5)
-            .stroke(.black, lineWidth: 5)
-
-            )
+            
+                .overlay(
+                    Rectangle()
+                        .inset(by: 2.5)
+                        .stroke(.black, lineWidth: 5)
+                    
+                )
             
             VStack {
-               Text("Create your new typography")
+                Text("Create your new typography")
                     .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
                     .padding(.bottom, 30)
                 ZStack {
@@ -46,18 +46,12 @@ struct CreateFontView: View {
                             .frame(width: 430)
                             .padding(.bottom, 60)
                     }
-                   
+                    
                 }
                 
-//                TextField(" |", text: $typographyName)
-//                    .foregroundStyle(.black)
-//                    .background(Color.lightGray)
-//                    .border(Color.black, width: 2)
-//                    .font(.system(.title))
-//                    .frame(width: 430)
-//                    .padding(.bottom, 30)
-                    
-                    
+                
+                
+                
                 
                 HStack {
                     
@@ -77,7 +71,7 @@ struct CreateFontView: View {
                     }
                     .frame(width: 173, height: 50)
                     .padding(.horizontal, 10)
-                        
+                    
                     
                     ZStack {
                         Rectangle()
