@@ -26,16 +26,7 @@ struct YourTypographies: View {
                     Spacer()
                     
                 }
-//                HStack {
-//                    Text("Create personalized bitmap fonts effortlessly with intuitive drawing tools and AI-generated character sets.")
-//                        .font(Font.custom("PixeloidSans-Bold", size: 30).weight(.bold))
-//                        .padding(.leading, 100)
-//                        
-//                        
-//                    
-//                    Spacer()
-//                    
-//                }
+
             }
             
         }
@@ -44,7 +35,7 @@ struct YourTypographies: View {
         
         VStack {
             HStack {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {}, label: {
                     Image("plus")
                         .padding(.leading, 100)
                 })

@@ -11,7 +11,8 @@ import SwiftUI
 struct GlyphAIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          
+       ContentView()
 //            PencilKitView()
         }
     }
