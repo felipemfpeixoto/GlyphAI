@@ -37,12 +37,12 @@ import SwiftUI
                         }
                     )
                 
-                Text("sei la")
+                Text("Fonte nova lala muito legal as fontes")
                     .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
                     .padding(.horizontal, 10)
                     .frame(width: 250) // Garante que
                     .padding(.vertical, 10)
-                    .background(Color.gray)
+                    .background(Color.mediumGray)
                     .overlay(
                         RoundedRectangle(cornerRadius: 0)
                             .stroke(Color.black, lineWidth: 2.5)
