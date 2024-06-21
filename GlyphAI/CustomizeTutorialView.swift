@@ -35,19 +35,19 @@ struct CustomizeTutorialView: View {
                     VStack{
                         Text("Let's Customize")
                             .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 25)
                         
                         Text("Your characters are now generated! Click on any character to customize it and make adjustments to fit your unique style. ")
                             .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 480)
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 20)
                         
                         Text("Enjoy refining your custom font")
                             .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 480)
-                            .padding(.bottom, 40)
+                            .padding(.bottom, 45)
                             
                     }
                 }
