@@ -14,6 +14,10 @@
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
 		0FBD33312C21F2B6000502B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD33302C21F2B6000502B0 /* Preview Assets.xcassets */; };
 		0FBD33382C220E14000502B0 /* PencilKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33372C220E14000502B0 /* PencilKitView.swift */; };
+		5D3CCFAF2C2492B9005CD495 /* YourTypographies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */; };
+		5D3CCFB12C249A74005CD495 /* PixeloidSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */; };
+		5D3CCFB52C25EBF1005CD495 /* CreateFontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */; };
+		5D3CCFB92C25ECB0005CD495 /* FontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,11 @@
 		0FBD332D2C21F2B6000502B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FBD33302C21F2B6000502B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0FBD33372C220E14000502B0 /* PencilKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitView.swift; sourceTree = "<group>"; };
+		5D3CCFAB2C2490F0005CD495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTypographies.swift; sourceTree = "<group>"; };
+		5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PixeloidSansBold.ttf; sourceTree = "<group>"; };
+		5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFontView.swift; sourceTree = "<group>"; };
+		5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +67,17 @@
 			isa = PBXGroup;
 			children = (
 				0F4684B02C25C37300406B9A /* MeuModeloFoda.mlpackage */,
+				5D3CCFAB2C2490F0005CD495 /* Info.plist */,
 				0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */,
 				0FBD332B2C21F2B4000502B0 /* ContentView.swift */,
 				0FBD332D2C21F2B6000502B0 /* Assets.xcassets */,
 				0FBD332F2C21F2B6000502B0 /* Preview Content */,
 				0FBD33372C220E14000502B0 /* PencilKitView.swift */,
 				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
+				5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */,
+				5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */,
+				5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */,
+				5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */,
 			);
 			path = GlyphAI;
 			sourceTree = "<group>";
@@ -136,6 +150,7 @@
 			files = (
 				0FBD33312C21F2B6000502B0 /* Preview Assets.xcassets in Resources */,
 				0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */,
+				5D3CCFB12C249A74005CD495 /* PixeloidSansBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,9 +163,12 @@
 			files = (
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
 				0F4684B12C25C37300406B9A /* MeuModeloFoda.mlpackage in Sources */,
+				5D3CCFB52C25EBF1005CD495 /* CreateFontView.swift in Sources */,
 				0FBD33382C220E14000502B0 /* PencilKitView.swift in Sources */,
+				5D3CCFB92C25ECB0005CD495 /* FontCardView.swift in Sources */,
 				0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */,
 				0F4684AF2C249E9100406B9A /* DrawingView.swift in Sources */,
+				5D3CCFAF2C2492B9005CD495 /* YourTypographies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,15 +302,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlyphAI/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlyphAI/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Deixa ai doidao";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,15 +333,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlyphAI/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlyphAI/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Deixa ai doidao";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
