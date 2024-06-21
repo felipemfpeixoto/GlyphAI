@@ -36,6 +36,7 @@ struct CreateFontView: View {
                             .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
                             .padding(.bottom, 20)
                         TextField(" |", text: $typographyName)
+                            .font(Font.custom("PixeloidSans-Bold", size: 21).weight(.bold))
                             .foregroundStyle(.black)
                             .background(Color.lightGray)
                             .border(Color.black, width: 2)

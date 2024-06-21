@@ -15,6 +15,7 @@
 		5D3CCFAF2C2492B9005CD495 /* YourTypographies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */; };
 		5D3CCFB12C249A74005CD495 /* PixeloidSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */; };
 		5D3CCFB52C25EBF1005CD495 /* CreateFontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */; };
+		5D3CCFB92C25ECB0005CD495 /* FontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTypographies.swift; sourceTree = "<group>"; };
 		5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PixeloidSansBold.ttf; sourceTree = "<group>"; };
 		5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFontView.swift; sourceTree = "<group>"; };
+		5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				0FBD33372C220E14000502B0 /* PencilKitView.swift */,
 				5D3CCFAE2C2492B9005CD495 /* YourTypographies.swift */,
 				5D3CCFB42C25EBF1005CD495 /* CreateFontView.swift */,
+				5D3CCFB82C25ECB0005CD495 /* FontCardView.swift */,
 				5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */,
 			);
 			path = GlyphAI;
@@ -155,6 +158,7 @@
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
 				5D3CCFB52C25EBF1005CD495 /* CreateFontView.swift in Sources */,
 				0FBD33382C220E14000502B0 /* PencilKitView.swift in Sources */,
+				5D3CCFB92C25ECB0005CD495 /* FontCardView.swift in Sources */,
 				0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */,
 				5D3CCFAF2C2492B9005CD495 /* YourTypographies.swift in Sources */,
 			);
