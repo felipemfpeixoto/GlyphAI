@@ -14,7 +14,9 @@ struct ContentView: View {
 //    @State var isDragging = false
     @State var lapis: Bool = true
     @State var showSaveAlert = false
-    @State var outputImage: UIImage?
+    @State var outputImage: [UIImage]?
+    
+    @State var typographie: Typographie = Typographie(name: "", characters: [])
     
     var body: some View {
         ZStack {
@@ -49,16 +51,30 @@ struct ContentView: View {
                 }
             }
             if let outputImage = self.outputImage {
-//                ScrollView(.horizontal) {
-                    Image(uiImage: outputImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 400)
-//                }
-                .onAppear {
-                    print(outputImage)
+                ScrollView {
+                    ZStack {
+                        Button {
+                            self.outputImage = nil
+                        } label: {
+                            Color.black.opacity(0.5)
+                        }
+                        VStack(spacing: 10) {
+                            ForEach(outputImage, id:\.self) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 400)
+                                    .onAppear {
+                                        print(image)
+                                    }
+                            }
+                        }
+                    }
                 }
             }
+        }
+        .onAppear {
+            typographie = dao.fonts[0]
         }
         .alert(isPresented: $showSaveAlert) {
             Alert(title: Text("Desenho Salvo"), message: Text("O desenho foi salvo na galeria"), dismissButton: .default(Text("OK")))
@@ -98,7 +114,7 @@ struct ContentView: View {
             let input = MeuModeloFodaInput(input_1: gridConvertido!)
             let prediction = try model.prediction(input: input)
             if let outputMultiArray = prediction.featureValue(for: "var_139")?.multiArrayValue {
-             
+                // Aqui cortar a imagem e pegar cada grid
                 outputImage = multiArrayToUIImage(outputMultiArray)
             }
         } catch {
@@ -136,7 +152,7 @@ struct ContentView: View {
 
         do {
             // Cria um MLMultiArray de tipo Double com as dimensões corretas
-            let multiArray = try MLMultiArray(shape: [1, 1, NSNumber(value: rowCount), NSNumber(value: columnCount)], dataType: .double)
+            let multiArray = try MLMultiArray(shape: [1, 1, NSNumber(value: rowCount), NSNumber(value: columnCount)], dataType: .int32)
             
             // Percorre o grid e define os valores no MLMultiArray
             for (i, row) in grid.enumerated() {
@@ -144,7 +160,7 @@ struct ContentView: View {
                     multiArray[[0, 0, NSNumber(value: i), NSNumber(value: j)]] = NSNumber(value: value ? 0 : 1)
                 }
             }
-            print(multiArray)
+            print("MultiArray: ", multiArray)
             return multiArray
         } catch {
             print("Error creating MLMultiArray: \(error)")
@@ -152,28 +168,61 @@ struct ContentView: View {
         }
     }
     
-    func multiArrayToUIImage(_ multiArray: MLMultiArray) -> UIImage? {
+    func multiArrayToUIImage(_ multiArray: MLMultiArray) -> [UIImage]? {
         
         var array: [Double] = []
         
         let length = multiArray.count
         print(length)
-        let posZero = multiArray[100]
-        print(posZero)
         
         for i in 0...length - 1 {
             array.append(Double(truncating: multiArray[i]))
         }
         
         if let newArray = reshapeArray(flattenedArray: array, height: 16, width: 416) {
+            // Aqui percorrer o array e atribuir a cada caractere da fonte criada
             
-            return arrayToGrayscaleImage(array: newArray)
+            print("New Array Count: ", newArray.count)
+            
+            var gridSeparadoPorCaractere: [[[Int]]] = cropAndConvertImageGrid(imageGrid: newArray, letterWidth: 16, numberOfLetters: 26)
+            
+            var i = 0
+            for caractere in gridSeparadoPorCaractere {
+                var atual = typographie.characters[i]
+                atual.grid = caractere
+            }
+            
+            var valorRetorno: [UIImage] = []
+            for caractere in gridSeparadoPorCaractere {
+                valorRetorno.append(arrayToGrayscaleImage(array: caractere)!)
+            }
+            return valorRetorno
         }
         return nil
         
     }
     
-    func arrayToGrayscaleImage(array: [[Double]]) -> UIImage? {
+    // Função para realizar o crop vertical
+    func cropAndConvertImageGrid(imageGrid: [[Double]], letterWidth: Int, numberOfLetters: Int) -> [[[Int]]] {
+        var alphabetGrids: [[[Int]]] = []
+
+        for letterIndex in 0..<numberOfLetters {
+            var letterGrid: [[Int]] = []
+
+            for row in imageGrid {
+                let startIndex = letterIndex * letterWidth
+                let endIndex = startIndex + letterWidth
+                let letterRow = row[startIndex..<endIndex].map { $0 > 0.5 ? 1 : 0 }
+                letterGrid.append(letterRow)
+            }
+
+            alphabetGrids.append(letterGrid)
+        }
+
+        return alphabetGrids
+    }
+    
+    func arrayToGrayscaleImage(array: [[Int]]) -> UIImage? {
         let height = array.count
         let width = array[0].count
         
@@ -182,7 +231,7 @@ struct ContentView: View {
         
         for i in 0..<height {
             for j in 0..<width {
-                let normalizedValue = UInt8(array[i][j] * 255.0)
+                let normalizedValue = UInt8(array[i][j] * 255)
                 pixelBuffer[i * width + j] = normalizedValue
             }
         }
@@ -271,6 +320,6 @@ extension View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
