@@ -89,10 +89,10 @@
 				0FBD332B2C21F2B4000502B0 /* ContentView.swift */,
 				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
 				5D3CCFC02C261D49005CD495 /* CharactersView.swift */,
+				5D4AAEDA2C28646F00A54725 /* CharacterCardView.swift */,
 				0F4684CD2C27942E00406B9A /* CanvasView.swift */,
 				5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */,
 				5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */,
-				5D4AAEDA2C28646F00A54725 /* CharacterCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
