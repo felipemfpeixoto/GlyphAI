@@ -25,6 +25,7 @@
 		5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */; };
 		5D3CCFBF2C260332005CD495 /* CustomizeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */; };
 		5D3CCFC12C261D49005CD495 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFC02C261D49005CD495 /* CharactersView.swift */; };
+		5D4AAEDB2C28646F00A54725 /* CharacterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AAEDA2C28646F00A54725 /* CharacterCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTimeToDrawView.swift; sourceTree = "<group>"; };
 		5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTutorialView.swift; sourceTree = "<group>"; };
 		5D3CCFC02C261D49005CD495 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		5D4AAEDA2C28646F00A54725 /* CharacterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				0F4684CD2C27942E00406B9A /* CanvasView.swift */,
 				5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */,
 				5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */,
+				5D4AAEDA2C28646F00A54725 /* CharacterCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				0F4684C22C2617FA00406B9A /* PencilKitView.swift in Sources */,
 				0F4684C32C2617FA00406B9A /* YourTypographies.swift in Sources */,
 				5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */,
+				5D4AAEDB2C28646F00A54725 /* CharacterCardView.swift in Sources */,
 				0F4684C12C2617FA00406B9A /* CreateFontView.swift in Sources */,
 				0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */,
 				0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */,

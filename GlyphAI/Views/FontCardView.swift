@@ -65,7 +65,7 @@ struct FontCardView: View {
 }
 
 
-
+//
 //#Preview {
-//    FontCardView(fonte: Typographie(name: "Mengo", characters: []))
+//    FontCardView(fonte: Typographie(name: "Mengo", characters: []), index: 0)
 //}
