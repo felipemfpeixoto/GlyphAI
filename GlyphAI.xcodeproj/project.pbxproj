@@ -88,6 +88,8 @@
 				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
 				5D3CCFC02C261D49005CD495 /* CharactersView.swift */,
 				0F4684CD2C27942E00406B9A /* CanvasView.swift */,
+				5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */,
+				5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,8 +129,6 @@
 				0FBD332D2C21F2B6000502B0 /* Assets.xcassets */,
 				5D3CCFAB2C2490F0005CD495 /* Info.plist */,
 				0FBD332F2C21F2B6000502B0 /* Preview Content */,
-				5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */,
-				5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */,
 				5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */,
 			);
 			path = GlyphAI;
@@ -366,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlyphAI/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GlyphAI/Info.plist;
@@ -397,7 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlyphAI/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GlyphAI/Info.plist;
