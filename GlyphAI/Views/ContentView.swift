@@ -9,73 +9,51 @@ import CoreML
 import SwiftUI
 import Photos
 
+// Ainda falta adicionar o overlay do tutorial
+
 struct ContentView: View {
-    @State private var grid: [[Bool]] = Array(repeating: Array(repeating: false, count: 16), count: 16)
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var grid: [[Int]] = Array(repeating: Array(repeating: 1, count: 16), count: 16)
 //    @State var isDragging = false
     @State var lapis: Bool = true
     @State var showSaveAlert = false
     @State var outputImage: [UIImage]?
+    @State var isGenerating: Bool = false
+    @State var didGenerate = false
     
-    @State var typographie: Typographie = Typographie(name: "", characters: [])
+    @State var fonte: Typographie = Typographie(name: "", characters: [])
+    
+    let index: Int
     
     var body: some View {
         ZStack {
-            VStack {
-                Button {
-                    print(grid.map({ a in
-                        a.map { a in
-                            return a ? 0 : 1
-                        }
-                    }))
-                    generateAlphabet()
-                } label: {
-                    Text("Gerar")
-                }
-                canvas
-            }
+            canvas
+            customBackButton
             canvasButtons
-            HStack {
-                Spacer()
-                Button {
-                    let renderer = ImageRenderer(content: DrawingView(grid: $grid, lapis: lapis, drawGrid: false))
-                    let image = renderer.uiImage!
-                    PHPhotoLibrary.shared().performChanges({
-                        PHAssetChangeRequest.creationRequestForAsset(from: image)
-                    }) { success, error in
-                        if success {
-                            showSaveAlert.toggle()
+            generateButton
+            if didGenerate {
+                ZStack {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                    NavigationLink(destination: CharactersView(index: index)) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundStyle(.blue)
+                            Text("Go")
+                                .font(.largeTitle)
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
                         }
-                    }
-                } label: {
-                    Text("Salvar Desenho")
-                }
-            }
-            if let outputImage = self.outputImage {
-                ScrollView {
-                    ZStack {
-                        Button {
-                            self.outputImage = nil
-                        } label: {
-                            Color.black.opacity(0.5)
-                        }
-                        VStack(spacing: 10) {
-                            ForEach(outputImage, id:\.self) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 400)
-                                    .onAppear {
-                                        print(image)
-                                    }
-                            }
-                        }
-                    }
+                    }.frame(width: 300, height: 300)
                 }
             }
         }
+        .padding(50)
         .onAppear {
-            typographie = dao.fonts[0]
+            fonte = dao.fonts[index]
         }
+        .navigationBarBackButtonHidden()
         .alert(isPresented: $showSaveAlert) {
             Alert(title: Text("Desenho Salvo"), message: Text("O desenho foi salvo na galeria"), dismissButton: .default(Text("OK")))
         }
@@ -83,26 +61,59 @@ struct ContentView: View {
     
     var canvas: some View {
         VStack(spacing: 0) {
-            
             DrawingView(grid: $grid, lapis: lapis, drawGrid: true)
-            
-            Button {
-                print(grid)
-                zeraTudo()
-            } label: {
-                Text("Apagar")
+        }
+    }
+    
+    var customBackButton: some View {
+        VStack {
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    Image("customBackButton")
+                }
+                Spacer()
             }
+            Spacer()
         }
     }
     
     var canvasButtons: some View {
-        HStack {
-            Button {
-                lapis.toggle()
-            } label: {
-                Text("Muda")
+        VStack {
+            HStack(spacing: 0) {
+                Button {
+                    lapis.toggle()
+                } label: {
+                    Image(lapis ? "pencilSelected" : "eraserSelected")
+                }
+                Spacer()
             }
             Spacer()
+        }.padding(.vertical, 75)
+    }
+    
+    var generateButton: some View {
+        VStack {
+            Spacer()
+            Button {
+                print(grid.map({ a in
+                    a.map { a in
+                        return a
+                    }
+                }))
+                generateAlphabet()
+            } label: {
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.gray)
+                    Rectangle()
+                        .stroke(.black, lineWidth: 3)
+                    Text("Generate similar characters")
+                        .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
+                        .foregroundStyle(.white)
+                }
+            }.frame(width: 347, height: 54)
         }
     }
     
@@ -139,12 +150,12 @@ struct ContentView: View {
     func zeraTudo() {
         for i in 0..<16 {
             for j in 0..<16 {
-                self.grid[i][j] = false
+                self.grid[i][j] = 1
             }
         }
     }
     
-    func convertGridToMLMultiArray(grid: [[Bool]]) -> MLMultiArray? {
+    func convertGridToMLMultiArray(grid: [[Int]]) -> MLMultiArray? {
         // Verifica se o grid não está vazio e possui tamanhos consistentes
         guard let firstRow = grid.first else { return nil }
         let rowCount = grid.count
@@ -157,7 +168,7 @@ struct ContentView: View {
             // Percorre o grid e define os valores no MLMultiArray
             for (i, row) in grid.enumerated() {
                 for (j, value) in row.enumerated() {
-                    multiArray[[0, 0, NSNumber(value: i), NSNumber(value: j)]] = NSNumber(value: value ? 0 : 1)
+                    multiArray[[0, 0, NSNumber(value: i), NSNumber(value: j)]] = NSNumber(value: value)
                 }
             }
             print("MultiArray: ", multiArray)
@@ -169,6 +180,7 @@ struct ContentView: View {
     }
     
     func multiArrayToUIImage(_ multiArray: MLMultiArray) -> [UIImage]? {
+        isGenerating = true
         
         var array: [Double] = []
         
@@ -184,22 +196,21 @@ struct ContentView: View {
             
             print("New Array Count: ", newArray.count)
             
-            var gridSeparadoPorCaractere: [[[Int]]] = cropAndConvertImageGrid(imageGrid: newArray, letterWidth: 16, numberOfLetters: 26)
+            let gridSeparadoPorCaractere: [[[Int]]] = cropAndConvertImageGrid(imageGrid: newArray, letterWidth: 16, numberOfLetters: 26)
             
             var i = 0
-            for caractere in gridSeparadoPorCaractere {
-                var atual = typographie.characters[i]
-                atual.grid = caractere
-            }
-            
             var valorRetorno: [UIImage] = []
             for caractere in gridSeparadoPorCaractere {
                 valorRetorno.append(arrayToGrayscaleImage(array: caractere)!)
+                // Chamar função do dao para alterar o grid dele
+                dao.atribuiGrid(fontIndex: index, characterIndex: i, grid: caractere)
+                i += 1
             }
+            isGenerating = false
+            didGenerate = true
             return valorRetorno
         }
         return nil
-        
     }
     
     // Função para realizar o crop vertical
@@ -212,7 +223,7 @@ struct ContentView: View {
             for row in imageGrid {
                 let startIndex = letterIndex * letterWidth
                 let endIndex = startIndex + letterWidth
-                let letterRow = row[startIndex..<endIndex].map { $0 > 0.5 ? 1 : 0 }
+                let letterRow = row[startIndex..<endIndex].map { $0 > 0.95 ? 1 : 0 }
                 letterGrid.append(letterRow)
             }
 
@@ -280,19 +291,6 @@ struct ContentView: View {
     }
 }
 
-
-
-// Salvando a imagem
-class ImageSaver: NSObject {
-    func writeToPhotoAlbum(image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAsset(from: image)
-        }) { success, error in
-            completion(success, error)
-        }
-    }
-}
-
 struct SnapshotView: UIViewRepresentable {
     var content: UIView
 
@@ -323,3 +321,46 @@ extension View {
 //#Preview {
 //    ContentView()
 //}
+
+
+
+// Código para salvar imagem
+
+//            HStack {
+//                Spacer()
+//                Button {
+//                    let renderer = ImageRenderer(content: DrawingView(grid: $grid, lapis: lapis, drawGrid: false))
+//                    let image = renderer.uiImage!
+//                    PHPhotoLibrary.shared().performChanges({
+//                        PHAssetChangeRequest.creationRequestForAsset(from: image)
+//                    }) { success, error in
+//                        if success {
+//                            showSaveAlert.toggle()
+//                        }
+//                    }
+//                } label: {
+//                    Text("Salvar Desenho")
+//                }
+//            }
+//            if let outputImage = self.outputImage {
+//                ScrollView {
+//                    ZStack {
+//                        Button {
+//                            self.outputImage = nil
+//                        } label: {
+//                            Color.black.opacity(0.5)
+//                        }
+//                        VStack(spacing: 10) {
+//                            ForEach(outputImage, id:\.self) { image in
+//                                Image(uiImage: image)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(height: 400)
+//                                    .onAppear {
+//                                        print(image)
+//                                    }
+//                            }
+//                        }
+//                    }
+//                }
+//            }

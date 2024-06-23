@@ -69,6 +69,7 @@ struct TutorialTimeToDrawView: View {
                     }
                 
             }
+            .frame(width: 577, height: 335)
         }
     }
 }

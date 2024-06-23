@@ -17,25 +17,26 @@ struct GlyphAIApp: App {
     
     var body: some Scene {
         WindowGroup {
-//                    ContentView()
-            YourTypographies()
-                .onChange(of: scenePhase) {
-                    switch scenePhase {
-                    case .background:
-                        do {
-                            try DAO.instance.save()
-                        } catch {
-                            print("Se ferrou")
+            NavigationStack {
+                //                    ContentView()
+                YourTypographies()
+                    .onChange(of: scenePhase) {
+                        switch scenePhase {
+                        case .background:
+                            do {
+                                try DAO.instance.save()
+                            } catch {
+                                print("Se ferrou")
+                            }
+                        case .inactive:
+                            break
+                        case .active:
+                            break
+                        @unknown default:
+                            break
                         }
-                    case .inactive:
-                        break
-                    case .active:
-                        break
-                    @unknown default:
-                        break
                     }
-                }
-            
+            }
         }
     }
 }

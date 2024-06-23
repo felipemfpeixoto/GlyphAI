@@ -28,4 +28,8 @@ class DAO: Codable {
         
         self.fonts.append(newFont)
     }
+    
+    func atribuiGrid(fontIndex: Int, characterIndex: Int, grid: [[Int]]) {
+        self.fonts[fontIndex].characters[characterIndex].grid = grid
+    }
 }

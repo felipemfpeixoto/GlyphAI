@@ -17,4 +17,5 @@ struct Character: Codable {
 struct Typographie: Codable {
     var name: String
     var characters: [Character]
+    var didGenerate = false
 }

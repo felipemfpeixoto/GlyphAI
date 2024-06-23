@@ -16,6 +16,7 @@
 		0F4684C32C2617FA00406B9A /* YourTypographies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684BF2C2617FA00406B9A /* YourTypographies.swift */; };
 		0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684C02C2617FA00406B9A /* FontCardView.swift */; };
 		0F4684CC2C2777D600406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CB2C2777D600406B9A /* MeuModeloFoda.mlpackage */; };
+		0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CD2C27942E00406B9A /* CanvasView.swift */; };
 		0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */; };
 		0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD332B2C21F2B4000502B0 /* ContentView.swift */; };
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
@@ -23,7 +24,7 @@
 		5D3CCFB12C249A74005CD495 /* PixeloidSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */; };
 		5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */; };
 		5D3CCFBF2C260332005CD495 /* CustomizeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */; };
-		5D3CCFC12C261D49005CD495 /* CaractersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFC02C261D49005CD495 /* CaractersView.swift */; };
+		5D3CCFC12C261D49005CD495 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CCFC02C261D49005CD495 /* CharactersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		0F4684BF2C2617FA00406B9A /* YourTypographies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourTypographies.swift; sourceTree = "<group>"; };
 		0F4684C02C2617FA00406B9A /* FontCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontCardView.swift; sourceTree = "<group>"; };
 		0F4684CB2C2777D600406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
+		0F4684CD2C27942E00406B9A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		0FBD33262C21F2B4000502B0 /* GlyphAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphAIApp.swift; sourceTree = "<group>"; };
 		0FBD332B2C21F2B4000502B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,7 +46,7 @@
 		5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PixeloidSansBold.ttf; sourceTree = "<group>"; };
 		5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTimeToDrawView.swift; sourceTree = "<group>"; };
 		5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTutorialView.swift; sourceTree = "<group>"; };
-		5D3CCFC02C261D49005CD495 /* CaractersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaractersView.swift; sourceTree = "<group>"; };
+		5D3CCFC02C261D49005CD495 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,15 +80,14 @@
 		0F4684BB2C26043F00406B9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0FBD332B2C21F2B4000502B0 /* ContentView.swift */,
 				0F4684BD2C2617F900406B9A /* CreateFontView.swift */,
-				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
 				0F4684C02C2617FA00406B9A /* FontCardView.swift */,
 				0F4684BE2C2617FA00406B9A /* PencilKitView.swift */,
 				0F4684BF2C2617FA00406B9A /* YourTypographies.swift */,
 				0FBD332B2C21F2B4000502B0 /* ContentView.swift */,
 				0F4684AE2C249E9100406B9A /* DrawingView.swift */,
-				5D3CCFC02C261D49005CD495 /* CaractersView.swift */,
+				5D3CCFC02C261D49005CD495 /* CharactersView.swift */,
+				0F4684CD2C27942E00406B9A /* CanvasView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D3CCFC12C261D49005CD495 /* CaractersView.swift in Sources */,
+				5D3CCFC12C261D49005CD495 /* CharactersView.swift in Sources */,
 				5D3CCFBF2C260332005CD495 /* CustomizeTutorialView.swift in Sources */,
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
 				0F4684C22C2617FA00406B9A /* PencilKitView.swift in Sources */,
@@ -226,6 +227,7 @@
 				5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */,
 				0F4684C12C2617FA00406B9A /* CreateFontView.swift in Sources */,
 				0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */,
+				0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */,
 				0F4684B72C2603C100406B9A /* DAO.swift in Sources */,
 				0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */,
 				0F4684CC2C2777D600406B9A /* MeuModeloFoda.mlpackage in Sources */,
