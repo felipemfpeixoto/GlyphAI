@@ -17,7 +17,7 @@ struct CharacterCardView: View {
                     .frame(width: 196, height: 196)
                     .overlay(
                         Rectangle()
-                            .stroke(Color.black, lineWidth: 8)
+                            .stroke(Color.black, lineWidth: 5)
                             .frame(width: 196, height: 196)
                     )
                 
@@ -32,7 +32,7 @@ struct CharacterCardView: View {
                 Text(character)
                     .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
                     .padding(.horizontal, 10)
-                    .frame(width: 180)
+                    .frame(width: 193)
                     .foregroundColor(.black)
                     .padding(.vertical, 10)
                     .background(Color.mediumGray)
