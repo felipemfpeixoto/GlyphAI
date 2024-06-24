@@ -31,15 +31,16 @@ struct TutorialTimeToDrawView: View {
                     VStack{
                         Text("Time to Draw")
                             .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 15)
                         
-                        Text("Draw your first letter on the pixel grid. GliphAI will then generate the remaining characters for you, maintaining the same style.")
+                        Text("Draw your first letter on the pixel grid. GliphAI will then generate the remaining characters for you, maintaining the same style. ")
                             .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 480)
+                           
                             .padding(.bottom, 15)
                         
-                        Text("Get started and watch your custom font come to life!")
+                        Text(" Get started and watch your custom font come to life!")
                             .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 480)
@@ -69,7 +70,6 @@ struct TutorialTimeToDrawView: View {
                     }
                 
             }
-            .frame(width: 577, height: 335)
         }
     }
 }
