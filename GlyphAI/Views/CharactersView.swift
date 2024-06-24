@@ -1,8 +1,3 @@
-
-
-
-
-
 import SwiftUI
 
 struct CharactersView: View {
@@ -40,11 +35,21 @@ struct CharactersView: View {
                 )
             VStack {
                 HStack {
+                    NavigationLink(destination: YourTypographies()) {
+                        Image("customBackButton")
+                            .padding(.bottom, 30)
+                            .padding(.leading, 60)
+                           
+                        Spacer()
+                    }
+                }
+                HStack {
+                    
                     Text(fonte.name)
                         .font(Font.custom("PixeloidSans-Bold", size: 40).weight(.bold))
-                        .padding(.leading, 100)
-                        .padding(.top, 60)
-                        .padding(.bottom, 5)
+                        .padding(.leading, 60)
+//                        .padding(.top, 60)
+//                        .padding(.bottom, 5)
                     Spacer()
                 }
             }
@@ -62,13 +67,13 @@ struct CharactersView: View {
         }
         .navigationTitle("Character Grid")
         .navigationBarTitleDisplayMode(.inline)
-                   .navigationBarHidden(true)
-        
+        .navigationBarHidden(true)
     }
 }
 
 
 
-//#Preview {
-//    CharactersView()
-//}
+
+#Preview {
+    CharactersView(index: 0)
+}
