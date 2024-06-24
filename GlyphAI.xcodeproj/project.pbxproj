@@ -15,8 +15,8 @@
 		0F4684C22C2617FA00406B9A /* PencilKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684BE2C2617FA00406B9A /* PencilKitView.swift */; };
 		0F4684C32C2617FA00406B9A /* YourTypographies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684BF2C2617FA00406B9A /* YourTypographies.swift */; };
 		0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684C02C2617FA00406B9A /* FontCardView.swift */; };
-		0F4684CC2C2777D600406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CB2C2777D600406B9A /* MeuModeloFoda.mlpackage */; };
 		0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CD2C27942E00406B9A /* CanvasView.swift */; };
+		0F4684D02C28650A00406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */; };
 		0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */; };
 		0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD332B2C21F2B4000502B0 /* ContentView.swift */; };
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
@@ -35,8 +35,8 @@
 		0F4684BE2C2617FA00406B9A /* PencilKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PencilKitView.swift; sourceTree = "<group>"; };
 		0F4684BF2C2617FA00406B9A /* YourTypographies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourTypographies.swift; sourceTree = "<group>"; };
 		0F4684C02C2617FA00406B9A /* FontCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontCardView.swift; sourceTree = "<group>"; };
-		0F4684CB2C2777D600406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
 		0F4684CD2C27942E00406B9A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
 		0FBD33262C21F2B4000502B0 /* GlyphAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphAIApp.swift; sourceTree = "<group>"; };
 		0FBD332B2C21F2B4000502B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				0F4684BC2C26159600406B9A /* Managers */,
-				0F4684CB2C2777D600406B9A /* MeuModeloFoda.mlpackage */,
+				0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */,
 				0F4684B52C2603BA00406B9A /* DAO */,
 				0F4684B22C2602CC00406B9A /* Models */,
 				0F4684BB2C26043F00406B9A /* Views */,
@@ -227,10 +227,10 @@
 				5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */,
 				0F4684C12C2617FA00406B9A /* CreateFontView.swift in Sources */,
 				0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */,
+				0F4684D02C28650A00406B9A /* MeuModeloFoda.mlpackage in Sources */,
 				0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */,
 				0F4684B72C2603C100406B9A /* DAO.swift in Sources */,
 				0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */,
-				0F4684CC2C2777D600406B9A /* MeuModeloFoda.mlpackage in Sources */,
 				0F4684B42C2602D700406B9A /* Models.swift in Sources */,
 				0F4684AF2C249E9100406B9A /* DrawingView.swift in Sources */,
 			);
@@ -381,7 +381,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.GlyphAI;
+				PRODUCT_BUNDLE_IDENTIFIER = felipePeixoto.GlyphAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -412,7 +412,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.GlyphAI;
+				PRODUCT_BUNDLE_IDENTIFIER = felipePeixoto.GlyphAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
