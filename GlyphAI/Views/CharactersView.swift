@@ -61,6 +61,9 @@ struct CharactersView: View {
             .padding()
         }
         .navigationTitle("Character Grid")
+        .navigationBarTitleDisplayMode(.inline)
+                   .navigationBarHidden(true)
+        
     }
 }
 
