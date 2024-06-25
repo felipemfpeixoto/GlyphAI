@@ -40,7 +40,6 @@ struct YourTypographies: View {
                         .padding(.top, 60)
                         .padding(.bottom, 5)
                     Spacer()
-                    
                 }
             }
         }
@@ -52,14 +51,16 @@ struct YourTypographies: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 25) {
                         Button(action: {
-                            // mostrar o sheet para criar nova tipografia
                             isSHowingCreate.toggle()
                         }, label: {
                             Image("plus")
-                        }).padding(.horizontal, 100) 
+                        }).padding(.horizontal, 100)
+                        
                         if dao.fonts.count != 0 {
-                            ForEach(dao.fonts.indices) { index in
-                                FontCardView(index: index)
+                            ForEach(dao.fonts.indices, id: \.self) { index in
+                                FontCardView(index: index, onDelete: { indexToDelete in
+                                    dao.deleteFont(at: indexToDelete)
+                                })
                             }
                         }
                     }

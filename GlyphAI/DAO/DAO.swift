@@ -1,10 +1,3 @@
-//
-//  DAO.swift
-//  GlyphAI
-//
-//  Created by infra on 21/06/24.
-//
-
 import Foundation
 import CodableExtensions
 
