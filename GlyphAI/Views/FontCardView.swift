@@ -1,10 +1,3 @@
-//
-//  FontCardView.swift
-//  GlyphAI
-//
-//  Created by Roberta Cordeiro on 21/06/24.
-//
-
 import SwiftUI
 
 struct FontCardView: View {
@@ -12,6 +5,7 @@ struct FontCardView: View {
     @State var fonte: Typographie = Typographie(name: "", characters: [])
     
     let index: Int
+    let onDelete: (Int) -> Void
     
     var body: some View {
         NavigationLink(destination: fonte.didGenerate ? AnyView(CharactersView(index: index)) : AnyView(ContentView(index: index))) {
@@ -29,8 +23,7 @@ struct FontCardView: View {
                             HStack {
                                 Spacer()
                                 Button(action: {
-                                    // Ação do botão
-                                    print("Botão pressionado")
+                                    onDelete(index)
                                 }) {
                                     Image("lixeira")
                                         .resizable()
@@ -46,7 +39,7 @@ struct FontCardView: View {
                 Text(fonte.name)
                     .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
                     .padding(.horizontal, 10)
-                    .frame(width: 250) // Garante que
+                    .frame(width: 250)
                     .foregroundStyle(.black)
                     .padding(.vertical, 10)
                     .background(Color.mediumGray)
@@ -56,16 +49,10 @@ struct FontCardView: View {
                     )
                     .padding(.bottom, 3)
             }
-            .frame(width: 260, height: 260) // Garante que o ZStack tenha o mesmo tamanho que o retângulo
+            .frame(width: 260, height: 260)
         }
         .onAppear {
             fonte = dao.fonts[index]
         }
     }
 }
-
-
-//
-//#Preview {
-//    FontCardView(fonte: Typographie(name: "Mengo", characters: []), index: 0)
-//}

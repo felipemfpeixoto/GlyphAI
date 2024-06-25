@@ -1,10 +1,3 @@
-//
-//  DAO.swift
-//  GlyphAI
-//
-//  Created by infra on 21/06/24.
-//
-
 import Foundation
 import CodableExtensions
 
@@ -31,5 +24,10 @@ class DAO: Codable {
     
     func atribuiGrid(fontIndex: Int, characterIndex: Int, grid: [[Int]]) {
         self.fonts[fontIndex].characters[characterIndex].grid = grid
+    }
+
+    func deleteFont(at index: Int) {
+        guard index >= 0 && index < fonts.count else { return }
+        fonts.remove(at: index)
     }
 }
