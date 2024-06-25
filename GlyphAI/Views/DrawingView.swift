@@ -18,7 +18,7 @@ struct DrawingView: View {
                     HStack(spacing: 0) {
                         ForEach(0..<16, id: \.self) { column in
                             Rectangle()
-                                .fill(self.grid[row][column] == 0 ? Color.black : drawGrid ? Color.ourLightGray : .white)
+                                .fill(self.grid[row][column] == 0 ? Color.black : drawGrid ? Color.ourLightGray : .lightGray)
                                 .frame(width: 30, height: 30)
                                 .border(Color.gray, width: drawGrid ? 1 : 0)
                                 .gesture(DragGesture(minimumDistance: 0)

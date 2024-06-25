@@ -21,7 +21,8 @@ struct ContentView: View {
     @State var outputImage: [UIImage]?
     @State var isGenerating: Bool = false
     @State var didGenerate = false
-    
+    @State var didReturn = false
+    @State var isLoading = false
     @State var fonte: Typographie = Typographie(name: "", characters: [])
     
     let index: Int
@@ -32,20 +33,25 @@ struct ContentView: View {
             customBackButton
             canvasButtons
             generateButton
+            if isLoading {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                ProgressView()
+            }
             if didGenerate {
                 ZStack {
-                    Color.black.opacity(0.4)
-                        .ignoresSafeArea()
-                    NavigationLink(destination: CharactersView(index: index)) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(.blue)
-                            Text("Go")
-                                .font(.largeTitle)
-                                .foregroundStyle(.white)
-                                .fontWeight(.bold)
+                        Color.black.opacity(0.4)
+                            .ignoresSafeArea()
+                        Button {
+                            dao.fonts[index].didGenerate = true
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 25)
+                                    .foregroundStyle(.blue)
+                                Text("GOOOOOO")
+                            }
                         }
-                    }.frame(width: 300, height: 300)
+                        .frame(width: 350, height: 350)
                 }
             }
         }
@@ -56,6 +62,11 @@ struct ContentView: View {
         .navigationBarBackButtonHidden()
         .alert(isPresented: $showSaveAlert) {
             Alert(title: Text("Desenho Salvo"), message: Text("O desenho foi salvo na galeria"), dismissButton: .default(Text("OK")))
+        }
+        .onChange(of: didReturn) {
+            DispatchQueue.main.async {
+                attributeAllImages()
+            }
         }
     }
     
@@ -97,12 +108,8 @@ struct ContentView: View {
         VStack {
             Spacer()
             Button {
-                print(grid.map({ a in
-                    a.map { a in
-                        return a
-                    }
-                }))
                 generateAlphabet()
+                isLoading.toggle()
             } label: {
                 ZStack {
                     Rectangle()
@@ -127,6 +134,7 @@ struct ContentView: View {
             if let outputMultiArray = prediction.featureValue(for: "var_139")?.multiArrayValue {
                 // Aqui cortar a imagem e pegar cada grid
                 outputImage = multiArrayToUIImage(outputMultiArray)
+                didReturn.toggle()
             }
         } catch {
             // something went wrong
@@ -201,9 +209,10 @@ struct ContentView: View {
             var i = 0
             var valorRetorno: [UIImage] = []
             for caractere in gridSeparadoPorCaractere {
-                valorRetorno.append(arrayToGrayscaleImage(array: caractere)!)
                 // Chamar função do dao para alterar o grid dele
                 dao.atribuiGrid(fontIndex: index, characterIndex: i, grid: caractere)
+                let image = arrayToGrayscaleImage(array: caractere)!
+//                dao.atribuiImage(fontIndex: index, characterIndex: i, image: image.pngData() ?? Data())
                 i += 1
             }
             isGenerating = false
@@ -289,6 +298,16 @@ struct ContentView: View {
         
         return reshapedArray
     }
+    
+    @MainActor func attributeAllImages() {
+        isGenerating = true
+        for index in dao.fonts[self.index].characters.indices {
+            let renderer = ImageRenderer(content: CanvasView(fontIndex: self.index, characterIndex: index, isGenerating: isGenerating))
+            let image = renderer.uiImage!
+            dao.atribuiImage(fontIndex: self.index, characterIndex: index, image: image.pngData() ?? Data())
+        }
+        isGenerating = false
+    }
 }
 
 struct SnapshotView: UIViewRepresentable {
@@ -321,46 +340,3 @@ extension View {
 //#Preview {
 //    ContentView()
 //}
-
-
-
-// Código para salvar imagem
-
-//            HStack {
-//                Spacer()
-//                Button {
-//                    let renderer = ImageRenderer(content: DrawingView(grid: $grid, lapis: lapis, drawGrid: false))
-//                    let image = renderer.uiImage!
-//                    PHPhotoLibrary.shared().performChanges({
-//                        PHAssetChangeRequest.creationRequestForAsset(from: image)
-//                    }) { success, error in
-//                        if success {
-//                            showSaveAlert.toggle()
-//                        }
-//                    }
-//                } label: {
-//                    Text("Salvar Desenho")
-//                }
-//            }
-//            if let outputImage = self.outputImage {
-//                ScrollView {
-//                    ZStack {
-//                        Button {
-//                            self.outputImage = nil
-//                        } label: {
-//                            Color.black.opacity(0.5)
-//                        }
-//                        VStack(spacing: 10) {
-//                            ForEach(outputImage, id:\.self) { image in
-//                                Image(uiImage: image)
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(height: 400)
-//                                    .onAppear {
-//                                        print(image)
-//                                    }
-//                            }
-//                        }
-//                    }
-//                }
-//            }

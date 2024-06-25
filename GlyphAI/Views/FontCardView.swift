@@ -14,7 +14,7 @@ struct FontCardView: View {
     let index: Int
     
     var body: some View {
-        NavigationLink(destination: fonte.didGenerate ? AnyView(CharactersView(index: index)) : AnyView(ContentView(index: index))) {
+        NavigationLink(destination: fonte.didGenerate ? AnyView(CharactersView(index: index)) : AnyView(AuxView(index: index))) {
             ZStack(alignment: .bottom) {
                 Rectangle()
                     .foregroundColor(.lightGray)

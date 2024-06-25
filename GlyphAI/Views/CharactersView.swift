@@ -2,6 +2,8 @@ import SwiftUI
 
 struct CharactersView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @State var fonte: Typographie
     let index: Int
     
@@ -21,6 +23,7 @@ struct CharactersView: View {
             }
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
     
     var header: some View {
@@ -35,13 +38,14 @@ struct CharactersView: View {
                 )
             VStack {
                 HStack {
-                    NavigationLink(destination: YourTypographies()) {
+                    Button {
+                        dismiss()
+                    } label: {
                         Image("customBackButton")
                             .padding(.bottom, 30)
                             .padding(.leading, 60)
-                           
-                        Spacer()
                     }
+                    Spacer()
                 }
                 HStack {
                     
@@ -58,16 +62,13 @@ struct CharactersView: View {
     
     var charactersGrid: some View {
         ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(.fixed(196), spacing: 16), count: 5), spacing: 16) {
-                ForEach(fonte.characters.indices, id: \.self) { characterIndex in
-                    CharacterCardView(character: fonte.characters[characterIndex].letra, fontIndex: index, characterIndex: characterIndex)
+                LazyVGrid(columns: Array(repeating: GridItem(.fixed(196), spacing: 16), count: 5), spacing: 16) {
+                    ForEach(Array(fonte.characters.enumerated()), id: \.element.letra) { characterIndex, character in
+                        CharacterCardView(character: character, fontIndex: index, characterIndex: characterIndex)
+                    }
                 }
-            }
             .padding()
         }
-        .navigationTitle("Character Grid")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)
     }
 }
 

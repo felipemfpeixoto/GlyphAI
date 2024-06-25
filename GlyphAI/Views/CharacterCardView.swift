@@ -5,48 +5,51 @@ import SwiftUI
 
 struct CharacterCardView: View {
     
-    let character: String
+    let character: Caractere
     let fontIndex: Int
     let characterIndex: Int
     
     var body: some View {
-        NavigationLink(destination: CanvasView(fontIndex: fontIndex, characterIndex: characterIndex)) {
+        NavigationLink(destination: CanvasView(fontIndex: fontIndex, characterIndex: characterIndex, isGenerating: false)) {
             ZStack(alignment: .bottom) {
                 Rectangle()
                     .foregroundColor(.lightGray)
-                    .frame(width: 196, height: 196)
-                    .overlay(
-                        Rectangle()
-                            .stroke(Color.black, lineWidth: 5)
-                            .frame(width: 196, height: 196)
-                    )
-                
+                Rectangle()
+                    .stroke(Color.black, lineWidth: 5)
                 VStack {
                     Spacer()
-                    Text(character)
-                        .font(Font.custom("PixeloidSans-Bold", size: 48).weight(.bold))
-                        .foregroundColor(.black)
+//                    LazyHGrid(rows: Array(repeating: GridItem(.fixed(7), spacing: 0), count: 16), spacing: 0) {
+//                        ForEach(0..<16, id: \.self) { rowIndex in
+//                            LazyVGrid(columns: Array(repeating: GridItem(.fixed(7), spacing: 0), count: 16), spacing: 0) {
+//                                ForEach(0..<16, id: \.self) { columnIndex in
+//                                    Rectangle()
+//                                        .frame(width: 7, height: 7)
+//                                        .foregroundStyle(character.grid![rowIndex][columnIndex] == 1 ? .lightGray : .black)
+//                                }
+//                            }
+//                        }
+//                    }
+                    Image(uiImage: UIImage(data: character.image ?? Data())!)
+                        .resizable()
+                        .frame(width: 80)
                     Spacer()
-                }
-                
-                Text(character)
-                    .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
-                    .padding(.horizontal, 10)
-                    .frame(width: 193)
-                    .foregroundColor(.black)
-                    .padding(.vertical, 10)
-                    .background(Color.mediumGray)
-                    .overlay(
+                    ZStack {
                         RoundedRectangle(cornerRadius: 0)
                             .stroke(Color.black, lineWidth: 2.5)
-                    )
-                    .padding(.bottom, 3)
+                        Text(character.letra)
+                            .font(Font.custom("PixeloidSans-Bold", size: 24).weight(.bold))
+                            .foregroundColor(.black)
+                            .background(Color.mediumGray)
+                    }
+                    .frame(width: 193)
+                }
             }
+            .frame(width: 196, height: 196)
         }
     }
 }
 
 
 //#Preview {
-//    CharacterCardView()
+//    CharacterCardView(character: Caractere(letra: "A"), fontIndex: 0, characterIndex: 0)
 //}

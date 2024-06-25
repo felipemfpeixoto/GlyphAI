@@ -18,7 +18,6 @@ struct GlyphAIApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                //                    ContentView()
                 YourTypographies()
                     .onChange(of: scenePhase) {
                         switch scenePhase {

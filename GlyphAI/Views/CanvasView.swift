@@ -11,20 +11,21 @@ struct CanvasView: View {
     
     let fontIndex: Int
     let characterIndex: Int
+    let isGenerating: Bool
     
-    @State var caractere: Character?
+    @State var caractere: Caractere?
     @State var grid: [[Int]] = []
     
     var body: some View {
         ZStack {
             if grid.count > 0 {
-                DrawingView(grid: $grid, lapis: true, drawGrid: true)
+                DrawingView(grid: $grid, lapis: true, drawGrid: !isGenerating)
             }
         }
         .onAppear {
             caractere = dao.fonts[fontIndex].characters[characterIndex]
             print(dao.fonts[fontIndex].name, caractere)
-            grid = (caractere?.grid)!
+            grid = (caractere?.grid) ?? [[]]
         }
     }
 }

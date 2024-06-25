@@ -17,6 +17,7 @@
 		0F4684C42C2617FA00406B9A /* FontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684C02C2617FA00406B9A /* FontCardView.swift */; };
 		0F4684CE2C27942E00406B9A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CD2C27942E00406B9A /* CanvasView.swift */; };
 		0F4684D02C28650A00406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */; };
+		0F4684E32C2B632800406B9A /* AuxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684E22C2B632800406B9A /* AuxView.swift */; };
 		0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */; };
 		0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD332B2C21F2B4000502B0 /* ContentView.swift */; };
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		0F4684C02C2617FA00406B9A /* FontCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontCardView.swift; sourceTree = "<group>"; };
 		0F4684CD2C27942E00406B9A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
+		0F4684E22C2B632800406B9A /* AuxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxView.swift; sourceTree = "<group>"; };
 		0FBD33262C21F2B4000502B0 /* GlyphAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphAIApp.swift; sourceTree = "<group>"; };
 		0FBD332B2C21F2B4000502B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				0F4684CD2C27942E00406B9A /* CanvasView.swift */,
 				5D3CCFBA2C25FD2C005CD495 /* TutorialTimeToDrawView.swift */,
 				5D3CCFBE2C260332005CD495 /* CustomizeTutorialView.swift */,
+				0F4684E22C2B632800406B9A /* AuxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D3CCFC12C261D49005CD495 /* CharactersView.swift in Sources */,
+				0F4684E32C2B632800406B9A /* AuxView.swift in Sources */,
 				5D3CCFBF2C260332005CD495 /* CustomizeTutorialView.swift in Sources */,
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
 				0F4684C22C2617FA00406B9A /* PencilKitView.swift in Sources */,

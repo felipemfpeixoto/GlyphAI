@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Character: Codable {
+struct Caractere: Codable {
     var letra: String
     var image: Data?
     var grid: [[Int]]?
@@ -16,6 +16,6 @@ struct Character: Codable {
 
 struct Typographie: Codable {
     var name: String
-    var characters: [Character]
+    var characters: [Caractere]
     var didGenerate = false
 }
