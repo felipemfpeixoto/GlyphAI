@@ -30,6 +30,10 @@ class DAO: Codable {
         self.fonts[fontIndex].characters[characterIndex].image = image
     }
     
+    func deleteFont() {
+        // deletar a fonte
+    }
+    
     // Função que faz o request para a api passando todas as imagens dos caracteres
     func uploadCharacters(characters: [Caractere]) {
         guard let url = URL(string: "http://127.0.0.1:5000/upload") else { return }
