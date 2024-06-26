@@ -1,5 +1,6 @@
 import Foundation
 import CodableExtensions
+import UIKit
 
 @Observable
 class DAO: Codable {
@@ -34,46 +35,79 @@ class DAO: Codable {
         // deletar a fonte
     }
     
-    // Função que faz o request para a api passando todas as imagens dos caracteres
-    func uploadCharacters(characters: [Caractere]) {
-        guard let url = URL(string: "http://127.0.0.1:5000/upload") else { return }
+    // Função para criar o JSON com nome da fonte
+    func createJSON(fontName: String, index: Int) -> Data? {
+        // Estrutura para armazenar os dados conforme JSON esperado pela API
+        struct APIData: Codable {
+            var font_name: String  // Nome da fonte a ser gerada
+            var letters: [String: [[Int]]]  // Dicionário de letras e seus grids
+        }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        // Array para armazenar os dados dos caracteres
+        var lettersData = [String: [[Int]]]()
         
-        let boundary = UUID().uuidString
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        var body = Data()
-        
-        for character in characters {
-            if let imageData = character.image {
-                let filename = "\(character.letra).png"
-                body.append("--\(boundary)\r\n".data(using: .utf8)!)
-                body.append("Content-Disposition: form-data; name=\"files\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
-                body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-                body.append(imageData)
-                body.append("\r\n".data(using: .utf8)!)
+        // Preenche o dicionário lettersData com as letras e seus respectivos grids
+        for caractere in self.fonts[index].characters {
+            if let grid = caractere.grid {
+                lettersData[caractere.letra] = grid
             }
         }
         
-        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        // Cria a estrutura APIData com o nome da fonte e os grids das letras
+        let apiData = APIData(font_name: fontName, letters: lettersData)
         
-        request.httpBody = body
+        // Cria um JSON a partir dos dados estruturados
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted  // Para formato legível
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
+        do {
+            let jsonData = try encoder.encode(apiData)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                if let response = requestPOST(json: jsonString) {
+                    saveTTFFromData(data: response, fontName: fontName)
+                    return response
+                }
             }
-            
-            if let response = response as? HTTPURLResponse {
-                print("Status code: \(response.statusCode)")
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
+        
+        return nil  // Retorna nil se houver algum erro
+    }
+    
+    // Função para fazer o request POST
+    func requestPOST(json: String) -> Data? {
+        guard let apiUrl = URL(string: "http://10.46.40.7:5001/convert") else {
+            print("URL inválida: \(url)")
+            return nil
+        }
+        
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = json.data(using: .utf8)
+        
+        do {
+            let responseData = try NSURLConnection.sendSynchronousRequest(request, returning: nil)
+            return responseData
+        } catch {
+            print("Erro na requisição POST: \(error)")
+            return nil
+        }
+    }
+    
+    func saveTTFFromData(data: Data, fontName: String) {
+        // Save the received .ttf file to the device's file system
+        // For example, you can save it in the Documents directory
+        if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = documentsDirectory.appendingPathComponent("\(fontName).ttf")
+            do {
+                try data.write(to: fileURL)
+                print("TTF file saved successfully.")
+                print(fileURL)
+            } catch {
+                print("Error saving TTF file: \(error)")
             }
-            
-            if let data = data {
-                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
-            }
-        }.resume()
+        }
     }
 }

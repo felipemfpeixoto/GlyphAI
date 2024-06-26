@@ -59,7 +59,7 @@ struct YourTypographies: View {
                         if dao.fonts.count != 0 {
                             ForEach(dao.fonts.indices, id: \.self) { index in
                                 FontCardView(index: index, onDelete: { indexToDelete in
-                                    dao.deleteFont(at: indexToDelete)
+//                                    dao.deleteFont(at: indexToDelete)
                                 })
                             }
                         }

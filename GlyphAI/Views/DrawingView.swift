@@ -30,8 +30,6 @@ struct DrawingView: View {
                                         let yAdd = row + Int(yLocation/30)
                                         guard xAdd > -1 && xAdd < 16 else {return}
                                         guard yAdd > -1 && yAdd < 16 else {return}
-                                        print(xAdd)
-                                        print(yAdd)
                                         self.grid[row + Int(yLocation/30)][column + Int(xLocation/30)] = lapis ? 0 : 1
                                     }
                                          //                            .onEnded { _ in

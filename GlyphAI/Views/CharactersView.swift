@@ -6,6 +6,7 @@ struct CharactersView: View {
     
     @State var fonte: Typographie
     let index: Int
+    @State var isExporting = false
     
     init(index: Int) {
         self.index = index
@@ -24,6 +25,9 @@ struct CharactersView: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
+        .fullScreenCover(isPresented: $isExporting, content: {
+            ApiResponseView(fontName: fonte.name, fontIndex: index)
+        })
     }
     
     var header: some View {
@@ -55,6 +59,12 @@ struct CharactersView: View {
 //                        .padding(.top, 60)
 //                        .padding(.bottom, 5)
                     Spacer()
+                    Button {
+                        isExporting = true
+                    } label: {
+                        Text("Export TTF")
+                    }
+
                 }
             }
         }

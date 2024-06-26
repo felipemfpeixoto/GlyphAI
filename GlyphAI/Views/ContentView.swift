@@ -179,7 +179,6 @@ struct ContentView: View {
                     multiArray[[0, 0, NSNumber(value: i), NSNumber(value: j)]] = NSNumber(value: value)
                 }
             }
-            print("MultiArray: ", multiArray)
             return multiArray
         } catch {
             print("Error creating MLMultiArray: \(error)")
@@ -201,9 +200,6 @@ struct ContentView: View {
         
         if let newArray = reshapeArray(flattenedArray: array, height: 16, width: 416) {
             // Aqui percorrer o array e atribuir a cada caractere da fonte criada
-            
-            print("New Array Count: ", newArray.count)
-            
             let gridSeparadoPorCaractere: [[[Int]]] = cropAndConvertImageGrid(imageGrid: newArray, letterWidth: 16, numberOfLetters: 26)
             
             var i = 0

@@ -24,7 +24,6 @@ struct CanvasView: View {
         }
         .onAppear {
             caractere = dao.fonts[fontIndex].characters[characterIndex]
-            print(dao.fonts[fontIndex].name, caractere)
             grid = (caractere?.grid) ?? [[]]
         }
     }
