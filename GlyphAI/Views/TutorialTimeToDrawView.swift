@@ -29,22 +29,22 @@ struct TutorialTimeToDrawView: View {
                 ZStack {
                     Image("line2")
                     VStack{
-                        Text("Time to Draw")
-                            .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
+                        Text("Font Generated")
+                            .font(Font.custom("PixeloidSans-Bold", size: 20).weight(.bold))
                             .padding(.bottom, 15)
                         
-                        Text("Draw your first letter on the pixel grid. GliphAI will then generate the remaining characters for you, maintaining the same style. ")
-                            .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
+                        Text("Your characters are now generated! You can tap on any character to customize it and make adjustments to fit your unique style.")
+                            .font(Font.custom("PixeloidSans-Bold", size: 17).weight(.bold))
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal, 480)
+                            .padding(.horizontal, 370)
                            
                             .padding(.bottom, 15)
                         
-                        Text(" Get started and watch your custom font come to life!")
-                            .font(Font.custom("PixeloidSans-Bold", size: 16).weight(.bold))
+                        Text("Enjoy refining your custom font!")
+                            .font(Font.custom("PixeloidSans-Bold", size: 17).weight(.bold))
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal, 480)
-                            .padding(.bottom, 30)
+                            .padding(.horizontal, 370)
+                            .padding(.bottom, 45)
                             
                     }
                 }
