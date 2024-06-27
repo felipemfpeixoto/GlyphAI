@@ -30,34 +30,26 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            canvas
-            customBackButton
-            canvasButtons
-            canvasTrashButton
-            generateButton
-            if isLoading {
-                Color.black.opacity(0.5)
-                    .ignoresSafeArea()
-                ProgressView()
+            ZStack {
+                canvas
+                customBackButton
+                canvasButtons
+                canvasTrashButton
+                generateButton
             }
+            .padding(50)
             if didGenerate {
                 ZStack {
-                        Color.black.opacity(0.4)
-                            .ignoresSafeArea()
-                        Button {
-                            dao.fonts[index].didGenerate = true
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25)
-                                    .foregroundStyle(.blue)
-                                Text("GOOOOOO")
-                            }
-                        }
-                        .frame(width: 350, height: 350)
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                    Button {
+                        dao.fonts[index].didGenerate = true
+                    } label: {
+                        TutorialTimeToDrawView()
+                    }
                 }
             }
         }
-        .padding(50)
         .onAppear {
             fonte = dao.fonts[index]
         }
