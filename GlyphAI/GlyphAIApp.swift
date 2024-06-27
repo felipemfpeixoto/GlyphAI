@@ -18,9 +18,10 @@ struct GlyphAIApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
+//                ContentView( index: 0)
 //                ApiResponseView(fontName: "Mengo", fontIndex: 0)
 //                TutorialTimeToDrawView()
-               YourTypographies()
+                YourTypographies()
                     .onChange(of: scenePhase) {
                         switch scenePhase {
                         case .background:

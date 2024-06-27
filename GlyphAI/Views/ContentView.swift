@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var grid: [[Int]] = Array(repeating: Array(repeating: 1, count: 16), count: 16)
 //    @State var isDragging = false
     @State var lapis: Bool = true
+    @State var cleanall: Bool = true
     @State var showSaveAlert = false
     @State var outputImage: [UIImage]?
     @State var isGenerating: Bool = false
@@ -29,33 +30,26 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            canvas
-            customBackButton
-            canvasButtons
-            generateButton
-            if isLoading {
-                Color.black.opacity(0.5)
-                    .ignoresSafeArea()
-                ProgressView()
+            ZStack {
+                canvas
+                customBackButton
+                canvasButtons
+                canvasTrashButton
+                generateButton
             }
+            .padding(50)
             if didGenerate {
                 ZStack {
-                        Color.black.opacity(0.4)
-                            .ignoresSafeArea()
-                        Button {
-                            dao.fonts[index].didGenerate = true
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25)
-                                    .foregroundStyle(.blue)
-                                Text("GOOOOOO")
-                            }
-                        }
-                        .frame(width: 350, height: 350)
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                    Button {
+                        dao.fonts[index].didGenerate = true
+                    } label: {
+                        TutorialTimeToDrawView()
+                    }
                 }
             }
         }
-        .padding(50)
         .onAppear {
             fonte = dao.fonts[index]
         }
@@ -99,6 +93,23 @@ struct ContentView: View {
                     Image(lapis ? "pencilSelected" : "eraserSelected")
                 }
                 Spacer()
+            }
+            Spacer()
+        }.padding(.vertical, 75)
+    }
+    
+    
+    var canvasTrashButton: some View {
+        VStack {
+            
+            HStack(spacing: 0) {
+                Spacer()
+                Button {
+                    cleanall.toggle()
+                } label: {
+                    Image(cleanall ? "trashbutton" : "trashbutton")
+                }
+             
             }
             Spacer()
         }.padding(.vertical, 75)
