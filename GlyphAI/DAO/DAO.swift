@@ -77,7 +77,9 @@ class DAO: Codable {
     
     // Função para fazer o request POST
     func requestPOST(json: String) -> Data? {
-        guard let apiUrl = URL(string: "http://10.46.40.7:5001/convert") else {
+        
+        // API_MV is in a secret file, ignored by git
+        guard let apiUrl = URL(string: API_MV) else {
             print("URL inválida: \(url)")
             return nil
         }

@@ -206,9 +206,12 @@ struct ContentView: View {
             var valorRetorno: [UIImage] = []
             for caractere in gridSeparadoPorCaractere {
                 // Chamar função do dao para alterar o grid dele
-                dao.atribuiGrid(fontIndex: index, characterIndex: i, grid: caractere)
-                let image = arrayToGrayscaleImage(array: caractere)!
-//                dao.atribuiImage(fontIndex: index, characterIndex: i, image: image.pngData() ?? Data())
+                if i == 0 {
+                    dao.atribuiGrid(fontIndex: index, characterIndex: i, grid: self.grid)
+                } else {
+                    dao.atribuiGrid(fontIndex: index, characterIndex: i, grid: caractere)
+                    let image = arrayToGrayscaleImage(array: caractere)!
+                }
                 i += 1
             }
             isGenerating = false
@@ -313,8 +316,7 @@ struct SnapshotView: UIViewRepresentable {
         return content
     }
 
-    func updateUIView(_ uiView: UIView, context: Context) {
-    }
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 extension View {
