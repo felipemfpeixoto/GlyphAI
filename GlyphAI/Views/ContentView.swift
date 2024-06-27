@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var grid: [[Int]] = Array(repeating: Array(repeating: 1, count: 16), count: 16)
 //    @State var isDragging = false
     @State var lapis: Bool = true
+    @State var cleanall: Bool = true
     @State var showSaveAlert = false
     @State var outputImage: [UIImage]?
     @State var isGenerating: Bool = false
@@ -32,6 +33,7 @@ struct ContentView: View {
             canvas
             customBackButton
             canvasButtons
+            canvasTrashButton
             generateButton
             if isLoading {
                 Color.black.opacity(0.5)
@@ -99,6 +101,23 @@ struct ContentView: View {
                     Image(lapis ? "pencilSelected" : "eraserSelected")
                 }
                 Spacer()
+            }
+            Spacer()
+        }.padding(.vertical, 75)
+    }
+    
+    
+    var canvasTrashButton: some View {
+        VStack {
+            
+            HStack(spacing: 0) {
+                Spacer()
+                Button {
+                    cleanall.toggle()
+                } label: {
+                    Image(cleanall ? "trashbutton" : "trashbutton")
+                }
+             
             }
             Spacer()
         }.padding(.vertical, 75)
