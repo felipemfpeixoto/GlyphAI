@@ -72,7 +72,7 @@ struct ContentView: View {
     
     var canvas: some View {
         VStack(spacing: 0) {
-            DrawingView(grid: $grid, lapis: lapis, drawGrid: true)
+            DrawingView(grid: $grid, lapis: $lapis, drawGrid: true)
         }
     }
     

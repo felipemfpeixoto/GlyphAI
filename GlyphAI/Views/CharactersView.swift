@@ -4,21 +4,16 @@ struct CharactersView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var fonte: Typographie
+    @State var fonte: Typographie?
     let index: Int
     @State var isExporting = false
-    
-    init(index: Int) {
-        self.index = index
-        self.fonte = dao.fonts[index]
-    }
     
     var body: some View {
         ZStack {
             VStack {
                 header
                 Spacer()
-                if fonte.characters.count > 0 {
+                if (fonte?.characters.count ?? 0) > 0 {
                     charactersGrid
                 }
             }
@@ -28,6 +23,9 @@ struct CharactersView: View {
         .fullScreenCover(isPresented: $isExporting, content: {
             ApiResponseView(fontName: dao.fonts[index].name, fontIndex: index)
         })
+        .onAppear {
+            fonte = dao.fonts[index]
+        }
     }
     
     var header: some View {
@@ -53,19 +51,26 @@ struct CharactersView: View {
                 }
                 HStack {
                     
-                    Text(fonte.name)
+                    Text(fonte?.name ?? "")
                         .font(Font.custom("PixeloidSans-Bold", size: 40).weight(.bold))
-                        .padding(.leading, 60)
 //                        .padding(.top, 60)
 //                        .padding(.bottom, 5)
                     Spacer()
                     Button {
                         isExporting = true
                     } label: {
-                        Text("Export TTF")
-                    }
+                        ZStack {
+                            Rectangle()
+                                .foregroundStyle(.white)
+                            Rectangle()
+                                .stroke(.black, lineWidth: 3)
+                            Text("Export TTF")
+                                .font(Font.custom("PixeloidSans-Bold", size: 18).weight(.bold))
+                                .foregroundStyle(.black)
+                        }
+                    }.frame(width: 173, height: 54)
 
-                }
+                }.padding(.horizontal, 60)
             }
         }
     }
@@ -73,7 +78,7 @@ struct CharactersView: View {
     var charactersGrid: some View {
         ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.fixed(196), spacing: 16), count: 5), spacing: 16) {
-                    ForEach(Array(fonte.characters.enumerated()), id: \.element.letra) { characterIndex, character in
+                    ForEach(Array(fonte?.characters.enumerated() ?? [].enumerated()), id: \.element.letra) { characterIndex, character in
                         CharacterCardView(character: character, fontIndex: index, characterIndex: characterIndex)
                     }
                 }

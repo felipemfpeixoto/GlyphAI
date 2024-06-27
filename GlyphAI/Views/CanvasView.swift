@@ -18,20 +18,27 @@ struct CanvasView: View {
     @State var grid: [[Int]] = []
     @State var lapis: Bool = true
     
+    @State var isAttributing = false
+    
     var body: some View {
         ZStack {
             if grid.count > 0 {
                 VStack {
                     Text(caractere?.letra ?? "-")
-                    Spacer()
                         .font(Font.custom("PixeloidSans-Bold", size: 45).weight(.bold))
-                    DrawingView(grid: $grid, lapis: true, drawGrid: !isGenerating)
+                    Spacer()
+                    DrawingView(grid: $grid, lapis: $lapis, drawGrid: !isGenerating)
                     Spacer()
                 }
             }
             if !isGenerating {
                 customBackButton
                 canvasButtons
+            }
+            if isAttributing {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                ProgressView("Fetching Changes")
             }
         }
         .navigationBarBackButtonHidden()
@@ -41,7 +48,7 @@ struct CanvasView: View {
             grid = (caractere?.grid) ?? [[]]
         }
         .onDisappear {
-            
+            dao.atribuiGrid(fontIndex: fontIndex, characterIndex: characterIndex, grid: grid)
         }
     }
     
@@ -49,7 +56,10 @@ struct CanvasView: View {
         VStack {
             HStack {
                 Button {
-                    dismiss()
+                    DispatchQueue.main.async {
+                        atribuiImagem()
+                        dismiss()
+                    }
                 } label: {
                     Image("customBackButton")
                 }
@@ -73,8 +83,13 @@ struct CanvasView: View {
         }.padding(.vertical, 75)
     }
     
-    func attributeGrid() {
-        dao.atribuiGrid(fontIndex: fontIndex, characterIndex: characterIndex, grid: grid)
+    @MainActor func atribuiImagem() {
+        isAttributing = true
+        let renderer = ImageRenderer(content: DrawingView(grid: $grid, lapis: $lapis, drawGrid: false))
+        let image = renderer.uiImage!
+        print(image.pngData())
+        dao.atribuiImage(fontIndex: fontIndex, characterIndex: characterIndex, image: image.pngData()!)
+        isAttributing = false
     }
 }
 

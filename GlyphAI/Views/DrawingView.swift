@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DrawingView: View {
     @Binding var grid: [[Int]]
-    var lapis: Bool
+    @Binding var lapis: Bool
     var drawGrid: Bool
     var body: some View {
         ZStack {
@@ -44,6 +44,6 @@ struct DrawingView: View {
     }
 }
 
-#Preview {
-    DrawingView(grid: .constant(Array(repeating: Array(repeating: 1, count: 16), count: 16)), lapis: true, drawGrid: true)
-}
+//#Preview {
+//    DrawingView(grid: .constant(Array(repeating: Array(repeating: 1, count: 16), count: 16)), lapis: true, drawGrid: true)
+//}
