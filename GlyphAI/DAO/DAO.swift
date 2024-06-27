@@ -27,6 +27,11 @@ class DAO: Codable {
         self.fonts[fontIndex].characters[characterIndex].grid = grid
     }
     
+    func deleteFont(at index: Int) {
+            guard index >= 0 && index < fonts.count else { return }
+            fonts.remove(at: index)
+        }
+    
     func atribuiImage(fontIndex: Int, characterIndex: Int, image: Data) {
         self.fonts[fontIndex].characters[characterIndex].image = image
     }
