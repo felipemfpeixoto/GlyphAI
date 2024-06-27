@@ -18,17 +18,6 @@ struct CharacterCardView: View {
                     .stroke(Color.black, lineWidth: 5)
                 VStack {
                     Spacer()
-//                    LazyHGrid(rows: Array(repeating: GridItem(.fixed(7), spacing: 0), count: 16), spacing: 0) {
-//                        ForEach(0..<16, id: \.self) { rowIndex in
-//                            LazyVGrid(columns: Array(repeating: GridItem(.fixed(7), spacing: 0), count: 16), spacing: 0) {
-//                                ForEach(0..<16, id: \.self) { columnIndex in
-//                                    Rectangle()
-//                                        .frame(width: 7, height: 7)
-//                                        .foregroundStyle(character.grid![rowIndex][columnIndex] == 1 ? .lightGray : .black)
-//                                }
-//                            }
-//                        }
-//                    }
                     Image(uiImage: UIImage(data: character.image ?? Data())!)
                         .resizable()
                         .frame(width: 80)
