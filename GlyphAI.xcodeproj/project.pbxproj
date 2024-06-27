@@ -19,7 +19,7 @@
 		0F4684D02C28650A00406B9A /* MeuModeloFoda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */; };
 		0F4684E32C2B632800406B9A /* AuxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684E22C2B632800406B9A /* AuxView.swift */; };
 		0F4684E52C2C922900406B9A /* ApiResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684E42C2C922900406B9A /* ApiResponseView.swift */; };
-		0F4684E72C2DD61500406B9A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684E62C2DD61500406B9A /* Secret.swift */; };
+		0F4684E92C2DD95D00406B9A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4684E82C2DD95D00406B9A /* Secrets.swift */; };
 		0FBD332A2C21F2B4000502B0 /* GlyphAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */; };
 		0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD332B2C21F2B4000502B0 /* ContentView.swift */; };
 		0FBD332E2C21F2B6000502B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD332D2C21F2B6000502B0 /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		0F4684CF2C28650A00406B9A /* MeuModeloFoda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MeuModeloFoda.mlpackage; sourceTree = "<group>"; };
 		0F4684E22C2B632800406B9A /* AuxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxView.swift; sourceTree = "<group>"; };
 		0F4684E42C2C922900406B9A /* ApiResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseView.swift; sourceTree = "<group>"; };
-		0F4684E62C2DD61500406B9A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		0F4684E82C2DD95D00406B9A /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		0FBD33262C21F2B4000502B0 /* GlyphAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBD33292C21F2B4000502B0 /* GlyphAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphAIApp.swift; sourceTree = "<group>"; };
 		0FBD332B2C21F2B4000502B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +115,7 @@
 		0FBD331D2C21F2B4000502B0 = {
 			isa = PBXGroup;
 			children = (
+				0F4684E82C2DD95D00406B9A /* Secrets.swift */,
 				0FBD33282C21F2B4000502B0 /* GlyphAI */,
 				0FBD33272C21F2B4000502B0 /* Products */,
 			);
@@ -141,7 +142,6 @@
 				5D3CCFAB2C2490F0005CD495 /* Info.plist */,
 				0FBD332F2C21F2B6000502B0 /* Preview Content */,
 				5D3CCFB02C249A74005CD495 /* PixeloidSansBold.ttf */,
-				0F4684E62C2DD61500406B9A /* Secret.swift */,
 			);
 			path = GlyphAI;
 			sourceTree = "<group>";
@@ -232,13 +232,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D3CCFC12C261D49005CD495 /* CharactersView.swift in Sources */,
+				0F4684E92C2DD95D00406B9A /* Secrets.swift in Sources */,
 				0F4684E32C2B632800406B9A /* AuxView.swift in Sources */,
 				5D3CCFBF2C260332005CD495 /* CustomizeTutorialView.swift in Sources */,
 				0FBD332C2C21F2B4000502B0 /* ContentView.swift in Sources */,
 				0F4684C22C2617FA00406B9A /* PencilKitView.swift in Sources */,
 				0F4684C32C2617FA00406B9A /* YourTypographies.swift in Sources */,
 				5D3CCFBB2C25FD2C005CD495 /* TutorialTimeToDrawView.swift in Sources */,
-				0F4684E72C2DD61500406B9A /* Secret.swift in Sources */,
 				0F4684E52C2C922900406B9A /* ApiResponseView.swift in Sources */,
 				5D4AAEDB2C28646F00A54725 /* CharacterCardView.swift in Sources */,
 				0F4684C12C2617FA00406B9A /* CreateFontView.swift in Sources */,
