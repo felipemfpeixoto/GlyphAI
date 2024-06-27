@@ -110,8 +110,6 @@ struct ApiResponseView: View {
             Caractere(letra: "B", image: nil, grid: [[1, 0], [0, 1]])
         ]
         
-        let fontName = "MinhaFonte"
-        
         // Chama a função para criar o JSON com o nome da fonte
         let json = dao.createJSON(fontName: fontName, index: fontIndex)
         fontData = 1
