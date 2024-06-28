@@ -8,7 +8,7 @@ struct FontCardView: View {
     let onDelete: (Int) -> Void
     
     var body: some View {
-        NavigationLink(destination: fonte.didGenerate ? AnyView(CharactersView(index: index)) : AnyView(AuxView(index: index))) {
+        NavigationLink(destination: fonte.didGenerate ? AnyView(CharactersView(index: index)) : AnyView(ContentView(index: index))) {
             ZStack(alignment: .bottom) {
                 Rectangle()
                     .foregroundColor(.lightGray)
