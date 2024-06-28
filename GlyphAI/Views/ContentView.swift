@@ -105,9 +105,9 @@ struct ContentView: View {
             HStack(spacing: 0) {
                 Spacer()
                 Button {
-                    cleanall.toggle()
+                    zeraTudo()
                 } label: {
-                    Image(cleanall ? "trashbutton" : "trashbutton")
+                    Image("trashbutton")
                 }
              
             }

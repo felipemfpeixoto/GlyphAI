@@ -21,7 +21,7 @@ struct CharactersView: View {
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isExporting, content: {
-            ApiResponseView(fontName: dao.fonts[index].name, fontIndex: index)
+            ApiResponseView(isShowingSelf: $isExporting, fontName: dao.fonts[index].name, fontIndex: index)
         })
         .onAppear {
             fonte = dao.fonts[index]

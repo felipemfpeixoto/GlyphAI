@@ -24,7 +24,7 @@ struct CanvasView: View {
         ZStack {
             if grid.count > 0 {
                 VStack {
-                    Text(caractere?.letra ?? "-")
+                    Text(!isGenerating ? (caractere?.letra ?? "-") : "")
                         .font(Font.custom("PixeloidSans-Bold", size: 45).weight(.bold))
                     Spacer()
                     DrawingView(grid: $grid, lapis: $lapis, drawGrid: !isGenerating)
